@@ -13,7 +13,8 @@ The purpose of this project is to evaluate a representative set of classifiers i
     Find the top-confused other-class that has *THIS* class as *ITS* top-confused class.
     The idea here is that these 2 classes are easy to confuse, so we don't have to push very hard to tip one into the other using the other's features.
     Consider the deceptor weighting that normalizes row sums to 1, combines reciprocal relationships, and scores the deceptor as the max of the reciprocal-relationship and the one-sided relationship:
-    UnitD = axis-divide(D, axis-max(axis-sum(D,row),1))      # Normalized confusion/deceptor rows (sum of row == 1).  Careful to avoid divide-by-zero!
+    UnitD = axis-divide(D, axis-max(axis-sum(D,row),1))
+    # Normalized confusion/deceptor rows (sum of row == 1).  Careful to avoid divide-by-zero!
     D = axis-argmax(np.max(np.sqrt(UnitD * UnitD.T), UnitD)) # sqrt() over the interval [0,1) should make the comparison of the product to the un-multiplied UnitD more fair.  ... which could represent a decent compromise between Strategy 1 and Strategy 2.
 
 #   Strategy 3:
@@ -23,6 +24,6 @@ The purpose of this project is to evaluate a representative set of classifiers i
      D is a matrix composed entirely of deveptive images to mix with X
 
 #  Strategy 4:
-  Use the the least-often-confused non-zero other-class for each class.
+    Use the the least-often-confused non-zero other-class for each class.
     The idea here is that it will be easier to find a small set of archetypes that confuse the classifier.
     These are potentially the outliers of the other class that are most like THIS class.
