@@ -10,9 +10,9 @@ The purpose of this project is to evaluate a representative set of classifiers i
   (3) The classifier outputs the class we are trying to get it to output.
 
 # Strategy 2:
-  Find the top-confused other-class that has *THIS* class as *ITS* top-confused class.
+    Find the top-confused other-class that has *THIS* class as *ITS* top-confused class.
     The idea here is that these 2 classes are easy to confuse, so we don't have to push very hard to tip one into the other using the other's features.
-  Consider the deceptor weighting that normalizes row sums to 1, combines reciprocal relationships, and scores the deceptor as the max of the reciprocal-relationship and the one-sided relationship:
+    Consider the deceptor weighting that normalizes row sums to 1, combines reciprocal relationships, and scores the deceptor as the max of the reciprocal-relationship and the one-sided relationship:
     UnitD = axis-divide(D, axis-max(axis-sum(D,row),1))      # Normalized confusion/deceptor rows (sum of row == 1).  Careful to avoid divide-by-zero!
     D = axis-argmax(np.max(np.sqrt(UnitD * UnitD.T), UnitD)) # sqrt() over the interval [0,1) should make the comparison of the product to the un-multiplied UnitD more fair.  ... which could represent a decent compromise between Strategy 1 and Strategy 2.
 
