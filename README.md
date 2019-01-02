@@ -1,5 +1,4 @@
-# Classifiers
-Exploring the Limits of Classifiers in a Hostile Environment
+# Exploring the Limits of Classifiers in a Hostile Environment
 
 The purpose of this project is to evaluate a representative set of classifiers in as pessimistic a way as possible. Therefore, the perspective chosen is white-box adversarial. The adversary can see detailed statistics for the classifier under evaluation and use that information to construct deceptive inputs. The adversary starts by introducing small changes to well-classified inputs and then proceeds to increase the size of the change until the classifier picks the wrong class.
 
