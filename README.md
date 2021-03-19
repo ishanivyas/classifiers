@@ -1,5 +1,9 @@
 # Exploring the Limits of Classifiers in a Hostile Environment
 
+# Introduction
+Here I am exploring the limits of classifiers in a hostile environment using the fashion-mnist dataset.
+
+### Purpose
 The purpose of this project is to evaluate a representative set of classifiers in as pessimistic a way as possible. Therefore, the perspective chosen is white-box adversarial. The adversary can see detailed statistics for the classifier under evaluation and use that information to construct deceptive inputs. The adversary starts by introducing small changes to well-classified inputs and then proceeds to increase the size of the change until the classifier picks the wrong class.
 
 ### Strategy 1:
@@ -9,7 +13,7 @@ The purpose of this project is to evaluate a representative set of classifiers i
   3. The image is not noticeably different from the original input.
   4. The classifier outputs the class we are trying to get it to output.
 
- ### Strategy 2:
+### Strategy 2:
  - Find the top-confused other-class that has *THIS* class as *ITS* top-confused class.
  - The idea here is that these 2 classes are easy to confuse, so we don't have to push very hard to tip one into the other using the other's features.
  - Consider the deceptor weighting that normalizes row sums to 1, combines reciprocal relationships, and scores the deceptor as the max of the reciprocal-relationship and the one-sided relationship:
@@ -26,3 +30,19 @@ The purpose of this project is to evaluate a representative set of classifiers i
 - Use the the least-often-confused non-zero other-class for each class.
 - The idea here is that it will be easier to find a small set of archetypes that confuse the classifier.
 - These are potentially the outliers of the other class that are most like THIS class.
+
+## Requirements:
+1. install jupyter-notebook
+```
+    Python==3.5.4
+        numpy
+        scikit-learn
+        pandas=0.21.0
+        seaborn=0.8.0
+        matplotlib
+````
+
+
+## How to Use:
+1. Create the directory fashionmnist and download [the data](https://www.kaggle.com/zalando-research/fashionmnist)
+2. Run the jupyter-notebook 'classifiers-v2-10k.ipynb'
